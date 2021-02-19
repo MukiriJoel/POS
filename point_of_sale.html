@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>POS</title>
+    <meta name="description" content="Point of sale checkout system">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/chrome50.css">
+    <link rel="stylesheet" href="assets/css/customer_facing_display.css">
+    <link rel="stylesheet" href="assets/css/customer_facing_display.compiled.css">
+    <link rel="stylesheet" href="assets/css/keyboard.css">
+    <link rel="stylesheet" href="assets/css/List-item.css">
+    <link rel="stylesheet" href="assets/css/pos_dashboard.compiled.css">
+    <link rel="stylesheet" href="assets/css/pos_receipts.css">
+    <link rel="stylesheet" href="assets/css/pos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+<script src="productList.js"></script><script src="productList.js"></script>
+</head>
+
+<body id="page-top">
+    <!-- Start: POS checkout system --> <div class="o_action_manager">
+<div id="wrapper" class="pos">
+<div class="pos-receipt-screen"></div>
+    <div class="pos-topheader">
+        <div class="pos-branding">
+        <img class="pos-logo" src="assets/img/pos/logo.png" alt="logo">
+            <div class="ticket-button">
+                <div class="with-badge" badge="1">
+                    <i class="fa fa-ticket" aria-hidden="true">
+                    </i>
+                </div>
+                <div>Orders</div>
+            </div>
+        </div>
+        <div class="pos-rightheader">
+            <div class="search-bar-portal">
+                <div class="search-box">
+                    <span class="icon">
+                        <i class="fa fa-search"></i>
+                    </span>
+                    <span class="clear-icon">
+                        <i class="fa fa-times" aria-hidden="true"></i>
+                    </span>
+                    <input type="text" placeholder="Search Products...">
+                </div>
+            </div>
+            <div class="status-buttons-portal">
+                <div class="status-buttons">
+                    <div class="oe_status">
+                        <span class="username">Administrator</span>
+                    </div>
+                    <div class="oe_status ">
+                         <div class="oe_icon oe_green">
+                             <i class="fa fa-fw fa-wifi" role="img" aria-label="Synchronisation Connected" title="Synchronisation Connected"></i>
+                         </div>
+                    </div>
+                    <div class="header-button close_button">Close</div>
+                
+                </div>
+            </div>
+                
+        </div>
+    </div>
+    <portal></portal>
+    <div class="pos-content">
+        <div class="window">
+            <div class="subwindow">
+                <div class="subwindow-container">
+                    <div class="subwindow-container-fix screens">
+                        <div class="product-screen screen" style="">                           
+                        <div class="screen-full-width">
+                            <div class="leftpane">
+                                <div class="order-container">
+                                    <div class="order">
+                                        <div class="order-empty">
+                                            <i class="fa fa-shopping-cart" role="img" aria-label="shopping cart" title="shopping cart"></i>
+                                            <h1>This Order Is Empty</h1>
+                                        </div>
+                                        <ul class="orderlines">
+                                            <li class="orderline selected">
+                                                <span class="product-name">
+                                                    Wall Shelf
+                                                </span>
+                                                <span class="price">$ 1.98</span>
+                                                <ul class="info-list">
+                                                    <li class="info">
+                                                        <em>1.00</em>
+                                                        <span>Units at $1.98 / Units</span>
+                                                    </li>
+                                                </ul>
+                                            </li>
+                                            <li class="orderline">
+                                                <span class="product-name">
+                                                    Desktop Organizer
+                                                </span>
+                                                <span class="price">$ 2.98</span>
+                                                <ul class="info-list">
+                                                    <li class="info">
+                                                        <em>4.00</em>
+                                                        <span>Units at $2.98 / Units</span>
+                                                    </li>
+                                                </ul>  
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="pads">
+                                    <div class="control-buttons"></div>
+                                    <div class="subpads">
+                                        <div class="actionpad">
+                                            <button class="button set-customer">
+                                                <i class="fa fa-user" role="img" aria-label="Customer" title="Customer"></i>
+                                                Customer
+                                            </button>
+                                            <button class="button pay">
+                                                <div class="pay-circle">
+                                                    <i class="fa fa-chevron-right" role="img" aria-label="Pay" title="Pay"></i>
+                                                </div>
+                                                Payment
+                                            </button>
+                                        </div>
+                                        <div class="numpad">
+                                            <button class="input-button number-char">1</button>
+                                            <button class="input-button number-char">2</button>
+                                            <button class="input-button number-char">3</button>
+                                            <button class="mode-button selected-mode">Qty</button>
+                                            <br>
+                                            <button class="input-button number-char">4</button>
+                                            <button class="input-button number-char">5</button>
+                                            <button class="input-button number-char">6</button>
+                                            <button class="mode-button">Disc</button>
+                                            <br>
+                                            <button class="input-button number-char">7</button>
+                                            <button class="input-button number-char">8</button>
+                                            <button class="input-button number-char">9</button>
+                                            <button class="mode-button">Price</button>
+                                            <br>
+                                            <button class="input-button numpad-minus">+/-</button>
+                                            <button class="input-button number-char">0</button>
+                                            <button class="input-button number-char">.</button>
+                                            <button class="input-button numpad-backspace">
+                                                <img style="pounter-events:none;" src="assets/img/pos/backspace.png" alt="Backspace" width="24" height="21">
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="rightpane">
+                                <div class="products-widget">
+                                    <div class="products-widget-control">
+                                        <div class="rightpane-header green-border-bottom">
+                                            <div class="breadcrumbs">
+                                                <span class="breadcrumb">
+                                                    <span class="breadcrumb-button breadcrumb-home">
+                                                        <i class="fa fa-home" role="img" aria-label="Home" title="Home"></i>
+                                                    </span>
+                                                </span>
+                                            </div>
+                                            <span class="category-simple-button">Miscellaneous</span>
+                                            <span class="category-simple-button">Office Furniture</span>
+                                            <portal></portal>
+                                        </div>
+                                        <portal></portal>
+                                    </div>
+                                    <div class="product-list-container">
+                                        <div class="product-list">
+                                            <article class="product" tab-index="0" data-product-id="7" aria-labelledby="article_product_7">
+                                                <div class="product-img">
+                                                    <img src="assets/img/prod.jpg" class="img-fluid" alt="Whiteboard Pen">
+                                                    <span class="price-tag">$ 1.20/Units</span>
+                                                </div>
+                                                <div id="article_product_7" class="product-name">Whiteboard Pen</div>
+                                            </article>
+                                            <article class="product" tab-index="0" data-product-id="6" aria-labelledby="article_product_6">
+                                            <div class="product-img">
+                                                    <img src="assets/img/prod.jpg" alt="Desktop Organizer" class="img-fluid">
+                                                    <span class="price-tag">$ 1.50/Units</span>
+                                                </div>
+                                                <div id="article_product_6" class="product-name">Desktop Organizer</div>
+                                            </article>
+                                            <article class="product" tab-index="0" data-product-id="5" aria-labelledby="article_product_5">
+                                            <div class="product-img">
+                                                    <img src="assets/img/prod2.jpg" alt="Monitor Stand">
+                                                    <span class="price-tag">$ 1.70/Units</span>
+                                                </div>
+                                                <div id="article_product_5" class="product-name">Monitor Stand</div>
+                                            </article>
+                                            <article class="product" tab-index="0" data-product-id="4" aria-labelledby="article_product_4">
+                                            <div class="product-img">
+                                                    <img src="assets/img/prod3.jpg" alt="Small Shelf">
+                                                    <span class="price-tag">$ 1.20/Units</span>
+                                                </div>
+                                                <div id="article_product_4" class="product-name">Small Shelf</div>
+                                            </article>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="switchpane">
+                                    <!--<button class="btn-switchpane"><h1>Back</h1></button>
+                                    <button class="btn-switchpane"><h1>Pay</h1>
+                                        <span>$ 7.34</span>
+                                    </button>
+                                    <button class="btn-switchpane secondary">
+                                        <h1>Review</h1>
+                                        <span>2 items</span>
+                                    </button>-->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                        <div class="payment-screen screen" style="visibility:hidden;">
+                            <div class="screen-content">
+                            <div class="top-content">
+                                    <div class="button back">
+                                        <i class="fa fa-angle-double-left fa -fw"></i>
+                                        <span class="back_text">Back</span>
+                                    </div>
+                                    <div class="top-content-center">
+                                        <h1>Payment</h1>
+                                    </div>
+                                    <div class="button next">
+                                        <span class="next_text">Validate</span>
+                                        <i class="fa fa-angle-double-right fa-fw"></i>
+                                    </div>
+                                </div>
+                            <div class="main-content">
+                                <div class="left-content">
+                                    <div class="paymentmethods-container">
+                                        <div class="paymentlines">
+                                            <div class="paymentline selected">
+                                                <div class="payment-name">Cash</div>
+                                                <div class="payment-amount">5.87</div>
+                                                <div aria-label="Delete" title="Delete" class="delete-button">
+                                                    <i class="fa fa-times-circle"></i>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="paymentmethods">
+                                            <div class="button paymentmethod">
+                                                <div class="payment-name">Cash</div>
+                                            </div>
+                                            <div class="button paymentmethod">
+                                                <div class="payment-name">Bank</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="right-content">
+                                    <section class="paymentlines-container">
+                                        <div class="paymentlines-empty">
+                                            <div class="total">$ 5.65</div>
+                                            <div class="message">Please Select A Payment Method.</div>
+                                        </div>
+                                        <div><div class="payment-status-container"><div><div class="payment-status-remaining"><span class="label">Remaining</span><span class="amount">$ 0.00</span></div><div class="payment-status-total-due"><span class="label">Total Due</span><span>$ 5.87</span></div></div><div><div class="payment-status-change"><span class="label">Change</span><span class="amount">$ 0.00</span></div></div></div></div>
+                                    </section>
+                                    <div class="payment-buttons-container">
+                                        <section class="payment-numpad">
+                                           <div class="numpad">
+                                               <button class="input-button number-char">1</button>
+                                               <button class="input-button number-char">2</button>
+                                               <button class="input-button number-char">3</button>
+                                               <button class="mode-button">+10</button>
+                                               <br>
+                                               <button class="input-button number-char">4</button>
+                                               <button class="input-button number-char">5</button>
+                                               <button class="input-button number-char">6</button>
+                                               <button class="mode-button">+20</button>
+                                               <br>
+                                               <button class="input-button number-char">7</button>
+                                               <button class="input-button number-char">8</button>
+                                               <button class="input-button number-char">9</button>
+                                               <button class="mode-button">+50</button>
+                                               <br><button class="input-button number-char">+/-</button>
+                                               <button class="input-button number-char">0</button>
+                                               <button class="input-button number-char">.</button>
+                                               <button class="input-button number-char">
+                                                   <img src="pos/bac    kspace.png" alt="Backspace" width="24" height="21">
+                                               </button>
+                                            </div>
+                                        </section>
+                                        <div class="payment-buttons">
+                                            <div class="customer-button">
+                                                <div class="button">
+                                                    <i class="fa fa-user" role="img" aria-label="customer" title="customer"></i>
+                                                    <span class="js_customer_name">Customer</span>
+                                                </div>
+                                            </div>
+                                            <div class="payment-controls">
+                                                <div class="button js-invoice">
+                                                    <i class="fa fa-file-text-o"></i>
+                                                    Invoice
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                                
+                            </div>
+                        </div>
+                        <div class="clientlist-screen screen" style="visibility:hidden;">
+                            <div class="screen-content">
+                                <div class="top-content">
+                                    <div role="img" aria-label="Add a customer" title="Add a customer" class="button new-customer"> Create </div>
+                                    <div class="button back">Discard</div>
+                                    <div class="searchbox-client top-content-center">
+                                        <input placeholder="Search Customers" size="1">
+                                        <span class="search-clear-client"></span>
+                                    </div>
+                                </div>
+                                <section class="full-content">
+                                    <div class="client-window">
+                                        <section class="subwindow collapsed">
+                                            <div class="subwindow-container collapsed"></div></section>
+                                        <section class="subwindow list">
+                                            <div class="subwindow-container">
+                                                <div class="subwindow-container-fix scrollable-y">
+                                                    <table class="client-list">
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th><th>Address</th><th>Phone</th><th>Email</th>
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="client-list-contents"><tr class="client-line " data-id="3"><td>Administrator</td>
+                                                            <td></td>
+                                                            <td style="width: 130px;"></td><td>jmukiri535@gmail.com</td>
+                                                            
+                                                            </tr>
+                                                            <tr class="client-line " data-id="1">
+                                                                <td>My Company</td><td>Kenya</td>
+                                                                <td style="width: 130px;">0720703796</td><td>jmukiri535@gmail.com</td></tr>
+                                                            <tr class="client-line " data-id="8">
+                                                                <td>delivaflix</td>
+                                                                <td></td>
+                                                                <td style="width: 130px;"></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="client-line " data-id="9">
+                                                                <td>jackson</td>
+                                                                <td></td>
+                                                                <td style="width: 130px;"></td>
+                                                                <td></td>
+                                                            </tr>
+                                                            <tr class="client-line " data-id="10">
+                                                                <td>joel kamau</td><td>syokimau, </td>
+                                                                <td style="width: 130px;">0720703796</td><td>jmukiri535@gmail.com</td></tr>
+                                                            <tr class="client-line " data-id="7">
+                                                                <td>joel</td>
+                                                                <td>syokimau, nairobi, </td><td style="width: 130px;"></td>
+                                                                <td></td>
+                                                            </tr>
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </section>
+                                    </div>
+                                </section>
+                            </div>
+                        </div>
+                        <div class="receipt-screen screen" style="visibility:hidden;">
+                            <div class="screen-content">
+                                <div class="top-content">
+                                    <div class="top-content-center">
+                                        <h1>$ 18.03</h1>
+                                    </div>
+                                    <div class="button next highlight"> New Order <i class="fa fa-angle-double-right"></i>
+                                    </div>
+                                </div>
+                                <div class="default-view">
+                                    <div class="pos-receipt-container">
+                                        <div class="pos-receipt">
+                                            <img src="" alt="Logo" class="pos-receipt-logo"><br>
+                                            <div class="pos-receipt-contact">
+                                                <div>My Company</div><div>Tel:0720703796</div><div>jmukiri535@gmail.com</div>
+                                                <div class="cashier">
+                                                    <div>--------------------------------</div>
+                                                    <div>Served by Administrator</div>
+                                                </div>
+                                            </div>
+                                            <br>
+                                            <br>
+                                            <div class="orderlines">
+                                                <div>Desk Organizer<span class="price_display pos-receipt-right-align">5.10</span>
+                                                </div>
+                                                <span></span>
+                                                <div>Monitor Stand<span class="price_display pos-receipt-right-align">3.19</span>
+                                                </div>
+                                                <span></span>
+                                                <div>Small Shelf</div><span></span>
+                                                <div class="pos-receipt-left-padding">3 x 2.83<span class="price_display pos-receipt-right-align">8.49</span>
+                                                </div>
+                                            </div>
+                                            <div class="pos-receipt-right-align">--------</div>
+                                            <br>
+                                            <div>Subtotal<span class="pos-receipt-right-align">$ 16.78</span>
+                                            </div>
+                                            <div>Tax 15.00%<span class="pos-receipt-right-align">1.25</span>
+                                            </div>
+                                            <div class="pos-receipt-right-align">--------</div>
+                                            <br>
+                                            <div class="pos-receipt-amount"> TOTAL <span class="pos-receipt-right-align">$ 18.03</span></div>
+                                            <br><br><div>Cash<span class="pos-receipt-right-align">0.00
+                                            </span>
+                                            </div>
+                                            <div>Cash
+                                                <span class="pos-receipt-right-align">18.03</span>
+                                            </div>
+                                            <div>Cash<span class="pos-receipt-right-align">0.00</span>
+                                            </div>
+                                            <br>
+                                            <div class="pos-receipt-amount receipt-change"> CHANGE <span class="pos-receipt-right-align">$ 0.00</span></div>
+                                            <br><
+                                            div class="before-footer"></div>
+                                            <div class="after-footer"></div>
+                                            <br>
+                                            <div class="pos-receipt-order-data">
+                                                <div>Order 00001-026-0002</div><div>02/18/2021 03:39:03</div>
+                                            </div>
+                                        </div>
+                                    <div class="actions">
+                                        <h1>How would you like to receive your receipt?</h1><div class="buttons">
+                                        <div class="button print">
+                                            <i class="fa fa-print"></i> Print Receipt </div></div>
+                                        <form class="send-email">
+                                            <div class="email-icon"><i aria-hidden="true" class="fa fa-envelope-o"></i>
+                                            </div>
+                                            <div class="input-email">
+                                                <input type="email" placeholder="Email Receipt">
+                                                <button type="submit" class="send">Send</button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    </div>
+                                </div>
+                            </div>
+                        <div class="ticket-screen screen" style="visibility:hidden;">
+                            <div class="screen-content">
+                                <div class="controls">
+                                    <div class="buttons">
+                                        <button class="highlight">New Order</button>
+                                        <button class="discard">Discard</button>
+                                    </div>
+                                    <div class="pos-search-bar">
+                                        <div class="search">
+                                            <span class="search-icon"><i class="fa fa-search"></i></span>
+                                            <input type="text" placeholder="Search Tickets..." class="radius-left">
+                                        </div>
+                                        <div class="filter radius-right">
+                                            <span class="down-icon"><i aria-hidden="true" class="fa fa-chevron-down"></i></span>
+                                            <span>All Tickets</span>
+                                            <ul class="options"><li>All Tickets</li><li>Ongoing</li><li>Payment</li><li>Receipt</li></ul>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="orders">
+                                    <div class="header-row">
+                                        <div class="col start wide">Date</div>
+                                        <div class="col start wide">Receipt Number</div>
+                                        <div class="col start">Customer</div>
+                                        <div class="col start">Employee</div>
+                                        <div class="col end">Total</div>
+                                        <div class="col start narrow">Status</div>
+                                        <div name="delete" class="col center very-narrow"></div>
+                                    </div>
+                                    <div class="order-row pointer">
+                                        <div class="col start wide">2021-02-18 03:56 AM</div><div class="col start wide">Order 00001-029-0004</div>
+                                        <div class="col start"></div>
+                                        <div class="col start">Administrator</div>
+                                        <div class="col end">$ 2.76</div>
+                                        <div class="col start narrow">Receipt</div>
+                                        <div name="delete" class="col center very-narrow delete-button">
+                                            <i aria-hidden="true" class="fa fa-trash"></i></div>
+                                    </div>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    <div class="popups" style="visibility:hidden;">
+        <div role="dialog" class="modal-dialog">
+            <div class="popup popup-error">
+                <p class="title">Empty Order</p>
+                <p class="body">There must be at least one product in your order before it can be validated</p>
+                <div class="footer">
+                    <div class="button cancel">Ok</div>
+                </div>
+            </div>
+        </div>
+        </div>
+    </div>
+</div>    
+
+    <!-- End: POS checkout system -->
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/barcode_reader.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/Chrome.js"></script>
+    <script src="assets/js/ClassRegistry.js"></script>
+    <script src="assets/js/ComponentRegistry.js"></script>
+    <script src="assets/js/ControlButtonsMixin.js"></script>
+    <script src="assets/js/custom_hooks.js"></script>
+    <script src="assets/js/db.js"></script>
+    <script src="assets/js/debug_manager.js"></script>
+    <script src="assets/js/devices.js"></script>
+    <script src="assets/js/Gui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/keyboard.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/models.js"></script>
+    <script src="assets/js/payment.js"></script>
+    <script src="assets/js/PopupControllerMixin.js"></script>
+    <script src="assets/js/PosComponent.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientDetailsEdit.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientLine.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientListScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ControlButtons/InvoiceButton.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ControlButtons/ReprintReceiptButton.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/MobileOrderManagementScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderDetails.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderFetcher.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderlineDetails.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderList.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderManagementControlPanel.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderManagementScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderRow.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ReprintReceiptScreen.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentMethodButton.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreen.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenElectronicPayment.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenNumpad.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenPaymentLines.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenStatus.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PSNumpadInputButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/ActionpadWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/CashBoxOpening.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategoryBreadcrumb.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategoryButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategorySimpleButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/ControlButtons/SetFiscalPositionButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/ControlButtons/SetPricelistButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/HomeCategoryBreadcrumb.js"></script>
+    <script src="assets/js/screens/ProductScreen/NumpadWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/Orderline.js"></script>
+    <script src="assets/js/screens/ProductScreen/OrderSummary.js"></script>
+    <script src="assets/js/screens/ProductScreen/OrderWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductItem.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductList.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductScreen.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductsWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductsWidgetControlPanel.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/OrderReceipt.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/ReceiptScreen.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/WrappedProductNameLines.js"></script>
+    <script src="assets/js/screens/ScaleScreen/ScaleScreen.js"></script>
+    <script src="assets/js/screens/TicketScreen/TicketScreen.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

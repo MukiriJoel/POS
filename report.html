@@ -1,0 +1,394 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Dashboard - Brand</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/chrome50.css">
+    <link rel="stylesheet" href="assets/css/customer_facing_display.css">
+    <link rel="stylesheet" href="assets/css/customer_facing_display.compiled.css">
+    <link rel="stylesheet" href="assets/css/keyboard.css">
+    <link rel="stylesheet" href="assets/css/List-item.css">
+    <link rel="stylesheet" href="assets/css/pos_dashboard.compiled.css">
+    <link rel="stylesheet" href="assets/css/pos_receipts.css">
+    <link rel="stylesheet" href="assets/css/pos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+<script src="productList.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>point of sale</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item dropdown show no-arrow" role="presentation">
+                        <!-- Start: dropdown --><a class="nav-link dropdown-toggle" href="orders.html" aria-expanded="true" data-toggle="dropdown"><i class="fas fa-clone"></i><span>Orders</span></a>
+<div role="menu" class="dropdown-menu shadow dropdown-menu-left animated--grow-in mr-2"><a role="presentation" class="dropdown-item" href="orders.html">Orders</a><a role="presentation" class="dropdown-item" href="sessions.html">Sessions</a>
+    <a role="presentation" class="dropdown-item" href="payments.html">Payments</a><a role="presentation" class="dropdown-item" href="customers1.html">Customers</a>
+        </div>
+                        <!-- End: dropdown -->
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="products.html"><i class="fas fa-bars"></i><span>Products</span></a></li>
+                    <li class="nav-item dropdown show no-arrow" role="presentation"><a class="nav-link dropdown-toggle" aria-expanded="true" href="#" data-toggle="dropdown"><i class="fas fa-chart-bar"></i><span>Reporting</span></a>
+<div role="menu" class="dropdown-menu shadow dropdown-menu-left animated--grow-in mr-2"><a role="presentation" class="dropdown-item" href="report.html">Orders</a><a role="presentation" href="#" class="dropdown-item" data-toggle="modal" data-target="#ordersmodal" id="salesdetailsbtn">Sales Details</a></div></li>
+                    <li class="nav-item dropdown show no-arrow" role="presentation"><a class="nav-link dropdown-toggle" aria-expanded="true" href="register.html" data-toggle="dropdown"><i class="fa fa-gear"></i><span>Configuration</span></a>
+<div role="menu" class="dropdown-menu shadow dropdown-menu-left animated--grow-in mr-2"><a role="presentation" class="dropdown-item" href="settings.html">Settings</a><a role="presentation" class="dropdown-item" href="pos-settings.html">Point Of Sales</a>
+<a role="presentation" class="dropdown-item" href="payments-1.html">Payment Methods</a>
+    <div class="dropdown-divider"></div>
+    <p class="text-center dropdown-header">PRODUCTS</p>
+    <a role="presentation" class="dropdown-item" href="posproducts.html">POS Product Categories</a>
+</div></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+                <!-- Start: reporting sales details modal -->
+                <div class="modal fade" role="dialog" tabindex="-1" id="ordersmodal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title font-weight-bold text-capitalize text-black-50">sales details</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                            <div class="modal-body">
+                                <div>
+                                    <div class="row">
+                                        <div class="col col-3">
+                                            <p>Start Date:</p>
+                                        </div>
+                                        <div class="col col-9"><input class="form-control" type="date"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-3">
+                                            <p>End Date:</p>
+                                        </div>
+                                        <div class="col col-9"><input class="form-control" type="date"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item" style="background-color:#858796;"><span class="font-weight-bold text-black-50">Point of Sale</span><i class="fa fa-caret-down" style="color:black; float:right;"></i></li>
+                                <li class="list-group-item"><span>Add A Line</span></li>
+                                <li class="list-group-item" id="shop"><span class="text-black-50">Shop</span><i class="fa fa-close" id="closeshop-btn" style="color:black; float:right;" role="button"></i></li>
+                                <li class="list-group-item" id="shop"><span class="text-black-50">Shop</span><i class="fa fa-close" id="closeshop-btn" style="color:black; float:right;" role="button"></i></li>
+                            </ul>
+                            <div class="modal-footer"><button class="btn btn-primary" type="button">Print</button><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: reporting sales details modal -->
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top bg-gradient-primary">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-clock fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">activities planned</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-envelope fa-fw"></i><span class="badge badge-danger badge-counter">7</span></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
+                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg">
+                                                <div class="status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
+                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg">
+                                                <div class="bg-warning status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
+                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"><span class="d-none d-lg-inline mr-2 text-gray-600 small text-capitalize">administrator</span></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-book-open fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Documentation</a>
+                                        <a
+                                            class="dropdown-item" role="presentation" href="#"><i class="fa fa-support fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Support</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Preferences</a>
+                                            <div
+                                                class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+            </div>
+            </li>
+            </ul>
+        </div>
+        </nav>
+        <div class="container-fluid">
+            <!-- Start: reporting sales details modal -->
+            <div class="modal fade" role="dialog" tabindex="-1" id="ordersmodal">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h4 class="modal-title font-weight-bold text-capitalize text-black-50">sales details</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                        <div class="modal-body">
+                            <div>
+                                <div class="row">
+                                    <div class="col col-3">
+                                        <p>Start Date:</p>
+                                    </div>
+                                    <div class="col col-9"><i class="fas fa-caret-down"></i><input type="date"></div>
+                                </div>
+                                <div class="row">
+                                    <div class="col col-3">
+                                        <p>End Date:</p>
+                                    </div>
+                                    <div class="col col-9"><i class="fas fa-caret-down"></i><input type="date"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <ul class="list-group">
+                            <li class="list-group-item" style="background-color:#858796;"><span class="font-weight-bold text-black-50">Point of Sale</span><i class="fa fa-caret-down" style="color:black; float:right;"></i></li>
+                            <li class="list-group-item"><span>Add A Line</span></li>
+                            <li class="list-group-item" id="shop"><span class="text-black-50">Shop</span><i class="fa fa-close" id="closeshop-btn" style="color:black; float:right;" role="button"></i></li>
+                            <li class="list-group-item" id="shop"><span class="text-black-50">Shop</span><i class="fa fa-close" id="closeshop-btn" style="color:black; float:right;" role="button"></i></li>
+                        </ul>
+                        <div class="modal-footer"><button class="btn btn-primary" type="button">Print</button><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button></div>
+                    </div>
+                </div>
+            </div>
+            <!-- End: reporting sales details modal -->
+            <div class="d-sm-flex justify-content-between align-items-center mb-4">
+                <h3 class="text-dark mb-0 text-capitalize">order analysis</h3><a class="btn btn-primary btn-sm d-none d-sm-inline-block" role="button" href="#"><i class="fas fa-upload fa-sm text-white-50"></i>&nbsp;Export</a></div>
+            <!-- Start: Chart -->
+            <div class="row">
+                <!-- Start: chart area --><div class="col-lg-11 col-xl-12">
+    <div class="card shadow mb-4">
+        <div class="card-header d-flex justify-content-between align-items-center">
+            <div class="dropdown no-arrow"><a class="btn btn-primary btn-sm dropdown-toggle" data-toggle="dropdown" href="#">Measures <i class="fas fa-caret-right fa-sm text-white-50"></i></a>
+                <div class="dropdown-menu shadow dropdown-menu-right animated--fade-in"><a class="dropdown-item text-capitalize pl-2" href="#">average price</a><a class="dropdown-item text-capitalize pl-2" href="#">delay validation</a><a class="dropdown-item text-capitalize pl-2" href="#">product quantity</a><a class="dropdown-item text-capitalize pl-2"
+                        href="#">sale line count</a><a class="dropdown-item text-capitalize pl-2" href="#">subtotal w/o discount</a><a class="dropdown-item text-capitalize pl-2" href="#">total discount</a><a class="dropdown-item text-capitalize pl-2" href="#">total price</a>
+                    <div
+                        class="dropdown-divider"></div><a class="dropdown-item text-capitalize pl-2" href="#">count</a></div>
+        </div>
+            <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item small" id="bar-btn" title="bar chart">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true"><i class="fas fa fa-bar-chart"></i></a>
+  </li>
+  <li class="nav-item small" id="line-btn" title="line chart">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false"><i class="fa fa-line-chart"></i></a>
+  </li>
+  <li class="nav-item small" id="pie-btn" title="pie chart">
+    <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false"><i class="fa fa-pie-chart"></i></a>
+  </li>
+            </ul>
+
+        <!--<div role="group" class="btn-group"><button class="btn btn-primary btn-sm" type="button" title="Bar Chart"><i class="fa fa-bar-chart"></i></button><button class="btn btn-primary btn-sm border-left" type="button" title="Line Chart"><i class="fa fa-line-chart"></i></button>
+            <button
+                class="btn btn-primary btn-sm border-left" type="button" title="Pie Chart"><i class="fas fa-chart-pie"></i></button>
+        </div>-->
+    </div>
+    <div class="card-body" style="height:450px;">
+        <script src="https://canvasjs.com/assets/script/canvasjs.min.js"></script>
+        <div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab"><script>window.onload = function () {
+	var chart = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "Total Price"              
+		},
+		data: [              
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			type: "doughnut",
+            showInLegend: true,
+			dataPoints: [
+				{ label: "apple",name:"apple", y: 10  },
+				{ label: "orange",name:"orange", y: 15  },
+				{ label: "banana",name:"banana", y: 25  },
+				{ label: "mango",name:"mango", y: 30  },
+				{ label: "grape",name:"grape", y: 28  }
+			]
+		}
+		]
+	});
+	chart.render();
+}
+</script><div id="chartContainer"></div></div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab"><script>window.onload = function () {
+	var chart2 = new CanvasJS.Chart("chartContainer", {
+		title:{
+			text: "Total Price"              
+		},
+		data: [              
+		{
+			// Change type to "doughnut", "line", "splineArea", etc.
+			type: "doughnut",
+            showInLegend: true,
+			dataPoints: [
+				{ label: "apple",name:"apple", y: 10  },
+				{ label: "orange",name:"orange", y: 15  },
+				{ label: "banana",name:"banana", y: 25  },
+				{ label: "mango",name:"mango", y: 30  },
+				{ label: "grape",name:"grape", y: 28  }
+			]
+		}
+		]
+	});
+	chart2.render();
+}
+</script><div id="chartContainer"></div></div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab"><div id="chartContainer"></div></div>
+</div>      
+    </div>
+</div>
+</div>
+                <!-- End: chart area -->
+            </div>
+            <!-- End: Chart -->
+        </div>
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Point Of Sale 2021</span></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/barcode_reader.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/Chrome.js"></script>
+    <script src="assets/js/ClassRegistry.js"></script>
+    <script src="assets/js/ComponentRegistry.js"></script>
+    <script src="assets/js/ControlButtonsMixin.js"></script>
+    <script src="assets/js/custom_hooks.js"></script>
+    <script src="assets/js/db.js"></script>
+    <script src="assets/js/debug_manager.js"></script>
+    <script src="assets/js/devices.js"></script>
+    <script src="assets/js/Gui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/keyboard.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/models.js"></script>
+    <script src="assets/js/payment.js"></script>
+    <script src="assets/js/PopupControllerMixin.js"></script>
+    <script src="assets/js/PosComponent.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientDetailsEdit.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientLine.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientListScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ControlButtons/InvoiceButton.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ControlButtons/ReprintReceiptButton.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/MobileOrderManagementScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderDetails.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderFetcher.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderlineDetails.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderList.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderManagementControlPanel.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderManagementScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderRow.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ReprintReceiptScreen.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentMethodButton.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreen.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenElectronicPayment.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenNumpad.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenPaymentLines.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenStatus.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PSNumpadInputButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/CashBoxOpening.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategoryBreadcrumb.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategoryButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategorySimpleButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/ControlButtons/SetFiscalPositionButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/ControlButtons/SetPricelistButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/HomeCategoryBreadcrumb.js"></script>
+    <script src="assets/js/screens/ProductScreen/NumpadWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/Orderline.js"></script>
+    <script src="assets/js/screens/ProductScreen/OrderSummary.js"></script>
+    <script src="assets/js/screens/ProductScreen/OrderWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductItem.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductList.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductsWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductsWidgetControlPanel.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/OrderReceipt.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/ReceiptScreen.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/WrappedProductNameLines.js"></script>
+    <script src="assets/js/screens/ScaleScreen/ScaleScreen.js"></script>
+    <script src="assets/js/screens/TicketScreen/TicketScreen.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

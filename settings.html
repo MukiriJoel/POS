@@ -1,0 +1,1285 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>POS</title>
+    <meta name="description" content="POS">
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/fonts/font-awesome.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome5-overrides.min.css">
+    <link rel="stylesheet" href="assets/css/chrome50.css">
+    <link rel="stylesheet" href="assets/css/customer_facing_display.css">
+    <link rel="stylesheet" href="assets/css/customer_facing_display.compiled.css">
+    <link rel="stylesheet" href="assets/css/keyboard.css">
+    <link rel="stylesheet" href="assets/css/List-item.css">
+    <link rel="stylesheet" href="assets/css/pos_dashboard.compiled.css">
+    <link rel="stylesheet" href="assets/css/pos_receipts.css">
+    <link rel="stylesheet" href="assets/css/pos.css">
+    <link rel="stylesheet" href="assets/css/style.css">
+<script src="productList.js"></script>
+</head>
+
+<body id="page-top">
+    <div id="wrapper">
+        <nav class="navbar navbar-dark align-items-start sidebar sidebar-dark accordion bg-gradient-primary p-0">
+            <div class="container-fluid d-flex flex-column p-0">
+                <a class="navbar-brand d-flex justify-content-center align-items-center sidebar-brand m-0" href="#">
+                    <div class="sidebar-brand-icon rotate-n-15"><i class="fas fa-shopping-cart"></i></div>
+                    <div class="sidebar-brand-text mx-3"><span>point of sale</span></div>
+                </a>
+                <hr class="sidebar-divider my-0">
+                <ul class="nav navbar-nav text-light" id="accordionSidebar">
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="dashboard.html"><i class="fas fa-tachometer-alt"></i><span>Dashboard</span></a></li>
+                    <li class="nav-item dropdown show no-arrow" role="presentation">
+                        <!-- Start: dropdown --><a class="nav-link dropdown-toggle" href="orders.html" aria-expanded="true" data-toggle="dropdown"><i class="fas fa-clone"></i><span>Orders</span></a>
+<div role="menu" class="dropdown-menu shadow dropdown-menu-left animated--grow-in mr-2"><a role="presentation" class="dropdown-item" href="orders.html">Orders</a><a role="presentation" class="dropdown-item" href="sessions.html">Sessions</a>
+    <a role="presentation" class="dropdown-item" href="payments.html">Payments</a><a role="presentation" class="dropdown-item" href="customers1.html">Customers</a>
+        </div>
+                        <!-- End: dropdown -->
+                    </li>
+                    <li class="nav-item" role="presentation"><a class="nav-link" href="products.html"><i class="fas fa-bars"></i><span>Products</span></a></li>
+                    <li class="nav-item dropdown show no-arrow" role="presentation"><a class="nav-link dropdown-toggle" aria-expanded="true" href="#" data-toggle="dropdown"><i class="fas fa-chart-bar"></i><span>Reporting</span></a>
+<div role="menu" class="dropdown-menu shadow dropdown-menu-left animated--grow-in mr-2"><a role="presentation" class="dropdown-item" href="report.html">Orders</a><a role="presentation" href="#" class="dropdown-item" data-toggle="modal" data-target="#ordersmodal" id="salesdetailsbtn">Sales Details</a></div></li>
+                    <li class="nav-item dropdown show no-arrow" role="presentation"><a class="nav-link dropdown-toggle" aria-expanded="true" href="register.html" data-toggle="dropdown"><i class="fa fa-gear"></i><span>Configuration</span></a>
+<div role="menu" class="dropdown-menu shadow dropdown-menu-left animated--grow-in mr-2"><a role="presentation" class="dropdown-item" href="settings.html">Settings</a><a role="presentation" class="dropdown-item" href="pos-settings.html">Point Of Sales</a>
+<a role="presentation" class="dropdown-item" href="payments-1.html">Payment Methods</a>
+    <div class="dropdown-divider"></div>
+    <p class="text-center dropdown-header">PRODUCTS</p>
+    <a role="presentation" class="dropdown-item" href="posproducts.html">POS Product Categories</a>
+</div></li>
+                </ul>
+                <div class="text-center d-none d-md-inline"><button class="btn rounded-circle border-0" id="sidebarToggle" type="button"></button></div>
+                <!-- Start: reporting sales details modal -->
+                <div class="modal fade" role="dialog" tabindex="-1" id="ordersmodal">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h4 class="modal-title font-weight-bold text-capitalize text-black-50">sales details</h4><button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button></div>
+                            <div class="modal-body">
+                                <div>
+                                    <div class="row">
+                                        <div class="col col-3">
+                                            <p>Start Date:</p>
+                                        </div>
+                                        <div class="col col-9"><input class="form-control" type="date"></div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col col-3">
+                                            <p>End Date:</p>
+                                        </div>
+                                        <div class="col col-9"><input class="form-control" type="date"></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="list-group">
+                                <li class="list-group-item" style="background-color:#858796;"><span class="font-weight-bold text-black-50">Point of Sale</span><i class="fa fa-caret-down" style="color:black; float:right;"></i></li>
+                                <li class="list-group-item"><span>Add A Line</span></li>
+                                <li class="list-group-item" id="shop"><span class="text-black-50">Shop</span><i class="fa fa-close" id="closeshop-btn" style="color:black; float:right;" role="button"></i></li>
+                                <li class="list-group-item" id="shop"><span class="text-black-50">Shop</span><i class="fa fa-close" id="closeshop-btn" style="color:black; float:right;" role="button"></i></li>
+                            </ul>
+                            <div class="modal-footer"><button class="btn btn-primary" type="button">Print</button><button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button></div>
+                        </div>
+                    </div>
+                </div>
+                <!-- End: reporting sales details modal -->
+            </div>
+        </nav>
+        <div class="d-flex flex-column" id="content-wrapper">
+            <div id="content">
+                <nav class="navbar navbar-light navbar-expand bg-white shadow mb-4 topbar static-top bg-gradient-primary">
+                    <div class="container-fluid"><button class="btn btn-link d-md-none rounded-circle mr-3" id="sidebarToggleTop" type="button"><i class="fas fa-bars"></i></button>
+                        <form class="form-inline d-none d-sm-inline-block mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
+                            <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                            </div>
+                        </form>
+                        <ul class="nav navbar-nav flex-nowrap ml-auto">
+                            <li class="nav-item dropdown d-sm-none no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-search"></i></a>
+                                <div class="dropdown-menu dropdown-menu-right p-3 animated--grow-in" role="menu" aria-labelledby="searchDropdown">
+                                    <form class="form-inline mr-auto navbar-search w-100">
+                                        <div class="input-group"><input class="bg-light form-control border-0 small" type="text" placeholder="Search for ...">
+                                            <div class="input-group-append"><button class="btn btn-primary py-0" type="button"><i class="fas fa-search"></i></button></div>
+                                        </div>
+                                    </form>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><span class="badge badge-danger badge-counter">3+</span><i class="fas fa-clock fa-fw"></i></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">activities planned</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-primary icon-circle"><i class="fas fa-file-alt text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 12, 2019</span>
+                                                <p>A new monthly report is ready to download!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-success icon-circle"><i class="fas fa-donate text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 7, 2019</span>
+                                                <p>$290.29 has been deposited into your account!</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="mr-3">
+                                                <div class="bg-warning icon-circle"><i class="fas fa-exclamation-triangle text-white"></i></div>
+                                            </div>
+                                            <div><span class="small text-gray-500">December 2, 2019</span>
+                                                <p>Spending Alert: We've noticed unusually high spending for your account.</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                            </li>
+                            <li class="nav-item dropdown no-arrow mx-1" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><i class="fas fa-envelope fa-fw"></i><span class="badge badge-danger badge-counter">7</span></a>
+                                    <div class="dropdown-menu dropdown-menu-right dropdown-list dropdown-menu-right animated--grow-in"
+                                        role="menu">
+                                        <h6 class="dropdown-header">alerts center</h6>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar4.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Hi there! I am wondering if you can help me with a problem I've been having.</span></div>
+                                                <p class="small text-gray-500 mb-0">Emily Fowler - 58m</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar2.jpeg">
+                                                <div class="status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>I have the photos that you ordered last month!</span></div>
+                                                <p class="small text-gray-500 mb-0">Jae Chun - 1d</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar3.jpeg">
+                                                <div class="bg-warning status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Last month's report looks great, I am very happy with the progress so far, keep up the good work!</span></div>
+                                                <p class="small text-gray-500 mb-0">Morgan Alvarez - 2d</p>
+                                            </div>
+                                        </a>
+                                        <a class="d-flex align-items-center dropdown-item" href="#">
+                                            <div class="dropdown-list-image mr-3"><img class="rounded-circle" src="assets/img/avatars/avatar5.jpeg">
+                                                <div class="bg-success status-indicator"></div>
+                                            </div>
+                                            <div class="font-weight-bold">
+                                                <div class="text-truncate"><span>Am I a good boy? The reason I ask is because someone told me that people say this to all dogs, even if they aren't good...</span></div>
+                                                <p class="small text-gray-500 mb-0">Chicken the Dog · 2w</p>
+                                            </div>
+                                        </a><a class="text-center dropdown-item small text-gray-500" href="#">Show All Alerts</a></div>
+                                </div>
+                                <div class="shadow dropdown-list dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown"></div>
+                            </li>
+                            <div class="d-none d-sm-block topbar-divider"></div>
+                            <li class="nav-item dropdown no-arrow" role="presentation">
+                                <div class="nav-item dropdown no-arrow"><a class="dropdown-toggle nav-link" data-toggle="dropdown" aria-expanded="false" href="#"><img class="border rounded-circle img-profile" src="assets/img/avatars/avatar1.jpeg"><span class="d-none d-lg-inline mr-2 text-white-600 small text-capitalize">administrator</span></a>
+                                    <div
+                                        class="dropdown-menu shadow dropdown-menu-right animated--grow-in" role="menu"><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Profile</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-book-open fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Documentation</a>
+                                        <a
+                                            class="dropdown-item" role="presentation" href="#"><i class="fa fa-support fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Support</a><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Preferences</a>
+                                            <div
+                                                class="dropdown-divider"></div><a class="dropdown-item" role="presentation" href="#"><i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>&nbsp;Logout</a></div>
+            </div>
+            </li>
+            </ul>
+        </div>
+        </nav>
+        <div class="container-fluid">
+            <h3 class="text-dark mb-4">Settings</h3>
+            <!-- Start: save button --><a class="btn btn-primary btn-sm mr-2 mb-1" role="button" href="#"><i class="fas fa-upload fa-sm text-white-50"></i> Save</a>
+            <!-- End: save button -->
+            <!-- Start: discard button --><a class="btn btn-danger btn-sm mr-2 mb-1" role="button" href="#"><i class="fas fa-trash-alt fa-sm text-white-50"></i> Discard</a>
+            <!-- End: discard button -->
+            <div class="card shadow">
+                <!-- Start: tab navs --><div class="card-header">
+<ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+  <li class="nav-item">
+    <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">General Settings</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Inventory</a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link " id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Invoicing</a>
+  </li>
+    <li class="nav-item">
+    <a class="nav-link" id="pills-pos-tab" data-toggle="pill" href="#pills-pos" role="tab" aria-controls="pills-pos" aria-selected="false">Point Of sale</a>
+  </li>
+</ul>
+</div>
+                <!-- End: tab navs -->
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-md-6 text-nowrap">
+                            <div id="dataTable_length" class="dataTables_length" aria-controls="dataTable"><label>Show&nbsp;<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected="">10</option><option value="25">25</option><option value="50">50</option><option value="100">100</option></select>&nbsp;</label></div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="text-md-right dataTables_filter" id="dataTable_filter">
+                                <!-- Start: export button --><a class="btn btn-primary btn-sm mr-2 mb-1" role="button" href="#"><i class="fas fa-upload fa-sm text-white-50"></i> Export</a>
+                                <!-- End: export button --><label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Search"></label></div>
+                        </div>
+                    </div>
+                    <!-- Start: tab content --><div>
+    <div class="tab-content" id="pills-tabContent">
+  <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Users</span></p>
+      
+      <div class="row pl-3">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-1" /><label class="custom-control-label" for="formCheck-1"></label></div>
+          </div>
+          <div class="col-9 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">1 active user <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Manage Users</p>
+          </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-1" /><label class="custom-control-label" for="formCheck-1"></label></div>
+          </div>
+          <div class="col-9 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">invite new user <i class="fas fa-question-circle"></i></p>
+              <div>
+                  <label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="Enter Email Address" /></label>
+                  <a class="btn btn-primary btn-sm mr-2 mb-1" href="#"><i class="fas fa-user fa-sm text-white-50"></i> Invite</a>
+              </div>
+              
+              
+          </div>
+          </div>
+      </div>
+          </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Companies</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-2" /><label class="custom-control-label" for="formCheck-2"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">my company</p>
+              <p class="small text-capitalize">kenya</p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Update Info</p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-3" /><label class="custom-control-label" for="formCheck-3"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">1 company</p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Manage Companies</p>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Languages</span></p>
+      <div class="row pl-3">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-4" /><label class="custom-control-label" for="formCheck-4"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">1 language <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> add language</p>
+              </div>
+          </div>
+      </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Business Documents</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-22" /><label class="custom-control-label" for="formCheck-22"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">format</p>
+              <p class="small text-capitalize">Set the paper format of printed documents </p>
+              <label><select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>A4</option><option value="25">US Letter</option>
+                  <option value="25">US Batch Deposit</option>
+                  </select></label>
+              <i class="fas fa-external-link-alt" href="#" role="button"></i>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-23" /><label class="custom-control-label" for="formCheck-23"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">document layout</p>
+              <p class="small text-capitalize">choose the layout of your documents</p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Configure Document Layout</p>
+              </div>
+          </div>
+         
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Contacts</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-12" /><label class="custom-control-label" for="formCheck-12"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">send SMS <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Send texts to your contacts </p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Buy Credits</p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-13" /><label class="custom-control-label" for="formCheck-13"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Partner autocomplete</p>
+              <p class="small text-capitalize">Automatically enrich your contact base with company data</p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i>Buy Credits</p>
+              </div>
+          </div>
+          </div>
+        </div>
+      
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Discuss</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-122" /><label class="custom-control-label" for="formCheck-122"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">activities <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">configure your activity types </p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Activity Types</p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-123" /><label class="custom-control-label" for="formCheck-123"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">external email servers <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">configure your own email servers</p>
+              <div>
+                  <p class="small text-capitalize">alias domain</p>
+                  <label><input type="search" class="form-control form-control-sm" aria-controls="dataTable" placeholder="mycompany.odoo.com" /></label>
+              </div>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i>Incoming Email Servers</p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i>Outgoing Email Servers</p>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Permissions</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-132" /><label class="custom-control-label" for="formCheck-132"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">default access rights <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Set custom access rights for new users </p>
+              <!--<p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Activity Types</p>-->
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-133" /><label class="custom-control-label" for="formCheck-133"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">customer account<i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Let your customers log in to see their documents </p>
+              <div>
+                   <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5" /><label class="form-check-label" for="formCheck-5">On Invitation</label></div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-5" /><label class="form-check-label" for="formCheck-5">Free Sign Up</label></div>
+              </div>
+              <br>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i>Default Access Rights</p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i>Manage API Keys</p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-172" /><label class="custom-control-label" for="formCheck-172"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">password reset <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Enable password reset from Login page  </p>
+              <!--<p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Activity Types</p>-->
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">In-App Purchases</span></p>
+      <div class="row pl-3">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-64" /><label class="custom-control-label" for="formCheck-64"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Odoo IAP <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">View your IAP Services and recharge your credits </p>
+              <p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> View My Services</p>
+              </div>
+          </div>
+      </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Units Of Measure</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-12" /><label class="custom-control-label" for="formCheck-12"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">weight UOM <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Define your weight unit of measure </p>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-59" /><label class="form-check-label" for="formCheck-59">Kilograms</label></div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-51" /><label class="form-check-label" for="formCheck-51">Pounds</label></div>
+              <!--<p class="small text-capitalize" style="color:blue;" role="button"><i class="fas fa-arrow-right"></i> Buy Credits</p>-->
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-153" /><label class="custom-control-label" for="formCheck-153"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">volume UOM</p>
+              <p class="small text-capitalize">Define your volume unit of measure </p>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-69" /><label class="form-check-label" for="formCheck-69">Cubic Meters</label></div>
+                  <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-71" /><label class="form-check-label" for="formCheck-71">Cubic Feet</label></div>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Integrations</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-272" /><label class="custom-control-label" for="formCheck-272"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">collaborative pads <!--<span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i>--></p>
+              <p class="small text-capitalize">Use external pads in Odoo Notes </p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-273" /><label class="custom-control-label" for="formCheck-273"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">outlook calendar<!--<span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i>--></p>
+              <p class="small text-capitalize">Synchronize your calendar with Outlook </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-278" /><label class="custom-control-label" for="formCheck-278"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">google calendar <!--<span class="span new p-1">Enterprise</span><i class="fas fa-question-circle"></i>--></p>
+              <p class="small text-capitalize"> Synchronize your calendar with Google Calendar </p>
+              </div>
+          </div>
+           <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-276" /><label class="custom-control-label" for="formCheck-276"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Google Drive<!--<span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i>--></p>
+              <p class="small text-capitalize">Create and attach Google Drive documents to any record </p>
+              </div>
+          </div>
+           <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-271" /><label class="custom-control-label" for="formCheck-271"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">google spreadsheet <!--<span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i>--></p>
+              <p class="small text-capitalize">Extract and analyze Odoo data from Google Spreadsheet</p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-282" /><label class="custom-control-label" for="formCheck-282"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">OAuth Authentication <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Use external accounts to log in (Google, Facebook, etc.) </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-782" /><label class="custom-control-label" for="formCheck-782"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">LDAP  Authentication <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Use LDAP credentials to log in </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-382" /><label class="custom-control-label" for="formCheck-382"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">unsplash image library <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Find free high-resolution images from Unsplash </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-582" /><label class="custom-control-label" for="formCheck-582"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">geo-localization</p>
+              <p class="small text-capitalize">geo-localize your partners </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-482" /><label class="custom-control-label" for="formCheck-482"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">reCAPTCHA: Easy on Humans, Hard on Bots</p>
+              <p class="small text-capitalize">Protect your forms from spam and abuse </p>
+              </div>
+          </div>
+          </div>
+        </div>
+</div>
+  <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Operations</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-32" /><label class="custom-control-label" for="formCheck-32"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">packages <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Put your products in packs (e.g. parcels, boxes) and track them </p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-33" /><label class="custom-control-label" for="formCheck-33"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Batch Pickings</p>
+              <p class="small text-capitalize">Process transfers in batch per worker</p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-43" /><label class="custom-control-label" for="formCheck-43"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">warnings</p>
+              <p class="small text-capitalize">Get informative or blocking warnings on partners</p>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Barcode</span></p>
+      <div class="row pl-3">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-4" /><label class="custom-control-label" for="formCheck-4"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">barcode scanner <span class="span new p-1">Enterprise</span><i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Process operations faster with barcodes </p>
+              </div>
+          </div>
+      </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Shipping</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-62" /><label class="custom-control-label" for="formCheck-62"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">email confirmation <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Send an automatic confirmation email when Delivery Orders are done </p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-93" /><label class="custom-control-label" for="formCheck-93"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">SMS confirmation <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Send an automatic confirmation SMS Text Message when Delivery Orders are done </p>
+              <label><select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>Delivery:Send By SMS</option><option value="25">Delivery:Send By Email</option></select></label>
+              <i class="fas fa-external-link-alt" href="#" role="button"></i>
+              <p href="#" style="color:blue;" role="button"><i class="fa fa-arrow-right"></i>Buy Credits</p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-45" /><label class="custom-control-label" for="formCheck-45"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">signature</p>
+              <p class="small text-capitalize">Require a signature on your delivery orders </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-35" /><label class="custom-control-label" for="formCheck-35"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">delivery methods</p>
+              <p class="small text-capitalize">Compute shipping costs </p>
+              </div>
+          </div>
+          </div>
+        </div>
+       <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Shipping COnnectors</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-72" /><label class="custom-control-label" for="formCheck-72"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">UPS connector <span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Put your products in packs (e.g. parcels, boxes) and track them </p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-73" /><label class="custom-control-label" for="formCheck-73"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">DHL USA Connector <span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Compute shipping costs and ship with DHL</p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-78" /><label class="custom-control-label" for="formCheck-78"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">FedEX Connector <span class="span new p-1">Enterprise</span><i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Compute shipping costs and ship with FedEx </p>
+              </div>
+          </div>
+           <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-76" /><label class="custom-control-label" for="formCheck-76"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">USPS Connector <span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Compute shipping costs and ship with USPS </p>
+              </div>
+          </div>
+           <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-71" /><label class="custom-control-label" for="formCheck-71"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">bpost Connector <span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Compute shipping costs and ship with bpos</p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-82" /><label class="custom-control-label" for="formCheck-82"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">easypost Connector <span class="span new p-1">Enterprise</span> <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Compute shipping costs and ship with Easypost </p>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Products</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-92" /><label class="custom-control-label" for="formCheck-92"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">variants <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Set product attributes (e.g. color, size) to manage variants</p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-93" /><label class="custom-control-label" for="formCheck-93"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">units of measure <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Sell and purchase products in different units of measure </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-95" /><label class="custom-control-label" for="formCheck-95"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">product packagings <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Manage product packagings (e.g. pack of 6 bottles, box of 10 pieces) </p>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Traceability</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-102" /><label class="custom-control-label" for="formCheck-102"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">lost & serial numbers <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Get a full traceability from vendors to customers </p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-103" /><label class="custom-control-label" for="formCheck-103"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">consignment <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">Set owner on stored products </p>
+              </div>
+          </div>
+          
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Valuation</span></p>
+      <div class="row pl-3">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-104" /><label class="custom-control-label" for="formCheck-104"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">landed costs <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Process operations faster with barcodes </p>
+              </div>
+          </div>
+      </div>
+        <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Warehouse</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-112" /><label class="custom-control-label" for="formCheck-112"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">storage locations <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Track product location in your warehouse </p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-113" /><label class="custom-control-label" for="formCheck-113"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">multi-step routes <i class="fas fa-question-circle"></i></p>
+              <p class="small text-capitalize">use your own routes</p>
+              </div>
+          </div>
+          
+          </div>
+        </div>
+        </div>
+  <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+        <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Taxes</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-632" /><label class="custom-control-label" for="formCheck-632"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">default taxes</p>
+              <p class="small text-capitalize">default taxes applied to local transactions</p>
+              <label>Sales Tax<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>Tax 15.00%</option><option value="25">Tax 25.00%</option><option value="50">Tax 50.00%</select></label>
+              <i class="fas fa-external-link-alt" href="#" role="button"></i>
+              <label>Purchase Tax<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>Tax 15.00%</option><option value="25">Tax 25.00%</option><option value="50">Tax 50.00%</select></label>
+              <i class="fas fa-external-link-alt" href="#" role="button"></i>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-33" /><label class="custom-control-label" for="formCheck-33"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">rounding method</p>
+              <p class="small text-capitalize">How total tax amount is computed in orders and invoices </p>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-606" /><label class="form-check-label" for="formCheck-606">Round Per Line</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-616" /><label class="form-check-label" for="formCheck-616">Round Globally</label></div>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6143" /><label class="custom-control-label" for="formCheck-6143"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">taxcloud <span class="span new p-1">Enterprise</span></p>
+              <p class="small text-capitalize">Compute tax rates based on U.S. ZIP codes </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6413" /><label class="custom-control-label" for="formCheck-6413"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">EU digital goods VAT <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize">Apply right VAT rates for digital products sold in EU </p>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Currencies</span></p>
+      <div class="row pl-3">              
+            <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-640" /><label class="custom-control-label" for="formCheck-640"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">main currency</p>
+              <p class="small text-capitalize">Main currency of your company </p>
+              <label>Currency<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>USD</option><option value="25">KES</option><option value="50">EURO</option><option value="50">AED</option><option value="50">AFN</option><option value="50">ALL</option><option value="50">AMD</option><option value="50" class="text-gray-50">Search More...</option></select></label>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-693" /><label class="custom-control-label" for="formCheck-693"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">multi-currencies <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize">Record transactions in foreign currencies</p>
+              </div>
+          </div>
+      </div>
+          </div>
+       <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Customer Invoices</span></p>
+      <div class="row pl-3">              
+            <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6410" /><label class="custom-control-label" for="formCheck-6410"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">default sending options</p>
+              <p class="small text-capitalize">Those options will be selected by default when clicking "Send & Print" on invoices </p>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Print</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Send By Email</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Send My Post</label></div>
+              <p style="color:blue;" href="#" role="button"><i class="fas fa-arrow-right"></i>Buy Credits</p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6999" /><label class="custom-control-label" for="formCheck-6999"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">snailmail <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize">Send invoices and payment follow-ups by post </p>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Print In Color</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">print Both Sides</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Add A Cover Page</label></div>
+              </div>
+              </div>
+           <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6913" /><label class="custom-control-label" for="formCheck-6913"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Line subtotals tax display  <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize">Line subtotals tax display  </p>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Excluded</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Included</label></div>
+             
+              </div>
+              </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6919" /><label class="custom-control-label" for="formCheck-6919"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">default terms and conditions  <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize">Show standard terms & conditions on invoices/orders </p>
+              <!--<div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Excluded</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Included</label></div>-->
+             
+              </div>
+              </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6819" /><label class="custom-control-label" for="formCheck-6819"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">warnings  <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize">Get warnings when invoicing specific customers</p>
+              <!--<div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Excluded</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Included</label></div>-->
+             
+              </div>
+              </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6719" /><label class="custom-control-label" for="formCheck-6719"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">cash rounding  <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize">Define the smallest coinage of the currency used to pay by cash </p>
+              <!--<div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Excluded</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Included</label></div>-->
+             
+              </div>
+              </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6719" /><label class="custom-control-label" for="formCheck-6719"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">intrastat <span class="span new">Enterprise</span></p>
+              <p class="small text-capitalize">Collect information and produce statistics on the trade in goods in Europe with intrastat </p>
+              <!--<div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Excluded</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Included</label></div>-->
+             
+              </div>
+              </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6119" /><label class="custom-control-label" for="formCheck-6119"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Default Incoterm <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize"> Default Incoterm of your company </p>
+              <!--  <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Excluded</label></div>-->
+                <label>Sales Tax<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>EX WORKS</option><option value="25">FREE CAREER</option><option value="50">FREE ALONGSIDE SHIP</option>
+                    <option value="50">FREE ALONGSIDE SHIP</option>
+                    <option value="50">COST AND FREIGHT</option>
+                    <option value="50">COST, INSURANCE AND FREIGHT</option><option value="50">CARRIAGE PAID TO</option><option value="50">Search More...</option></select></label>
+              <i class="fas fa-external-link-alt" href="#" role="button"></i>           
+              </div>
+              </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6739" /><label class="custom-control-label" for="formCheck-6739"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">sales receipt <span class="span new">Enterprise</span></p>
+              <p class="small text-capitalize">Active to create sale receipt </p>
+              <!--<div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Excluded</label></div>
+              <div class="form-check"><input class="form-check-input" type="checkbox" id="formCheck-7" /><label class="form-check-label" for="formCheck-7">Tax-Included</label></div>-->
+             
+              </div>
+              </div>
+          <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Customer Payments</span></p>
+      <div class="row pl-3">              
+            <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6408" /><label class="custom-control-label" for="formCheck-6408"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">invoice online payment</p>
+              <p class="small text-capitalize">Let your customers pay their invoices online </p>
+              <!--<label>Currency<select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>USD</option><option value="25">KES</option><option value="50">EURO</option><option value="50">AED</option><option value="50">AFN</option><option value="50">ALL</option><option value="50">AMD</option><option value="50" class="text-gray-50">Search More...</option></select></label>-->
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6930" /><label class="custom-control-label" for="formCheck-6930"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">SEPA Direct Debit (SDD) <span class="span new">Enterprise</span></p>
+              <p class="small text-capitalize">Collect customer payments in one-click using Euro SEPA Service </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6931" /><label class="custom-control-label" for="formCheck-6931"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">QR Codes <!--<span class="span new">Enterprise</span>--></p>
+              <p class="small text-capitalize">Add a payment QR-code to your invoices  </p>
+              </div>
+          </div>
+      </div>
+          </div>
+          <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Vendor Bills</span></p>
+      <div class="row pl-3">              
+            <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6488" /><label class="custom-control-label" for="formCheck-6488"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">bill digitization <span class="span new">Enterprise</span></p>
+              <p class="small text-capitalize">Digitalize your scanned or PDF vendor bills with OCR and Artificial Intelligence  </p>
+              
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6980" /><label class="custom-control-label" for="formCheck-6980"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Purchase Receipt <span class="span new">Enterprise</span></p>
+              <p class="small text-capitalize">Activate to create purchase receipt </p>
+              </div>
+          </div>
+      </div>
+          </div>
+          <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Vendor Bills</span></p>
+      <div class="row pl-3">              
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6787" /><label class="custom-control-label" for="formCheck-6787"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">SEPA Credit Transfer (SCT) <span class="span new">Enterprise</span></p>
+              <p class="small text-capitalize"> Pay your bills in one-click using Euro SEPA Service</p>
+              
+              </div>
+          
+      </div>
+          </div>
+          <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Analytics</span></p>
+      <div class="row pl-3">              
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-6797" /><label class="custom-control-label" for="formCheck-6797"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Margin Analysis <span class="span new">Enterprise</span></p>
+              <p class="small text-capitalize"> Monitor your product margins from invoices </p>
+              
+              </div>
+          
+      </div>
+          </div>
+          
+          </div>
+      </div>
+          </div>
+        <div class="tab-pane fade" id="pills-pos" role="tabpanel" aria-labelledby="pills-pos-tab">
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Taxes</span></p>
+      
+      <div class="row pl-3">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-1" /><label class="custom-control-label" for="formCheck-1"></label></div>
+          </div>
+          <div class="col-9 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">default sales tax</p>
+              <p class="small text-capitalize">default sales tax for products</p>
+              <label><select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>Tax 15.00%</option><option value="25">Tax 25.00%</option><option value="50">Tax 50.00%</select></label>
+              <i class="fas fa-external-link-alt" href="#" role="button"></i>
+              <p href="#" style="color:blue;" role="button"><i class="fa fa-arrow-right"></i>Taxes</p>
+          </div>
+      </div>
+          </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Pricing</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-2" /><label class="custom-control-label" for="formCheck-2"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">pricelists</p>
+              <p class="small text-capitalize"> Set multiple prices per product, automated discounts, etc.</p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-3" /><label class="custom-control-label" for="formCheck-3"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Multi-Currencies</p>
+              <p class="small text-capitalize">Record transactions in foreign currencies </p>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Payments</span></p>
+      <div class="row pl-3">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-4" /><label class="custom-control-label" for="formCheck-4"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">cash rounding <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize"> Set multiple prices per product, automated discounts, etc.</p>
+              </div>
+          </div>
+      </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Payment terminals</span></p>
+      
+      <div class="row">
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-22" /><label class="custom-control-label" for="formCheck-22"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">adyen</p>
+              <p class="small text-capitalize">Accept payments with an Adyen payment terminal </p>
+              </div>
+          </div>
+      <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-23" /><label class="custom-control-label" for="formCheck-23"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">Vantiv (US & Canada)<i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Accept payments with a Vantiv payment terminal </p>
+              </div>
+          </div>
+          <div class="col-lg-6 col-md-12 col-sm-12">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-13" /><label class="custom-control-label" for="formCheck-13"></label></div>
+              </div>
+          <div class="col-8 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">six <i class="fas fa-question-circle" href="#" role="button"></i></p>
+              <p class="small text-capitalize">Accept payments with a Six payment terminal </p>
+              </div>
+          </div>
+          </div>
+        </div>
+      <div><p style="background-color:#858796; padding: .75rem 1.25rem; border: 1px solid rgba(0,0,0,.125);">
+          <span class="text-weight-bold text-black-50">Inventory</span></p>
+      
+      <div class="row pl-3">
+          <div class="col-2">
+          <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-31" /><label class="custom-control-label" for="formCheck-31"></label></div>
+          </div>
+          <div class="col-9 border-left">
+              <p class="font-weight-bolder text-black-50 text-capitalize">inventory management</p>
+              <p class="small text-capitalize">update quantities in stock</p>
+              <!--<label><select class="form-control form-control-sm custom-select custom-select-sm"><option value="10" selected>Tax 15.00%</option><option value="25">Tax 25.00%</option><option value="50">Tax 50.00%</select></label>
+              <i class="fas fa-external-link-alt" href="#" role="button"></i>
+              <p href="#" style="color:blue;" role="button"><i class="fa fa-arrow-right"></i>Taxes</p>-->
+              <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-10" /><label class="custom-control-label" for="formCheck-10"></label>At The Session Closing(advised)</div>
+              <div class="custom-control custom-checkbox"><input type="checkbox" class="custom-control-input" id="formCheck-11" /><label class="custom-control-label" for="formCheck-11"></label>In Real Time</div>
+              
+          </div>
+      </div>
+          </div>
+</div>
+        </div>
+      </div>
+    
+        
+
+                    <!-- End: tab content -->
+                </div>
+            </div>
+        </div>
+    </div>
+    <footer class="bg-white sticky-footer">
+        <div class="container my-auto">
+            <div class="text-center my-auto copyright"><span>Point Of Sale 2021</span></div>
+        </div>
+    </footer>
+    </div><a class="border rounded d-inline scroll-to-top" href="#page-top"><i class="fas fa-angle-up"></i></a></div>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/chart.min.js"></script>
+    <script src="assets/js/bs-init.js"></script>
+    <script src="assets/js/barcode_reader.js"></script>
+    <script src="assets/js/chart.js"></script>
+    <script src="assets/js/Chrome.js"></script>
+    <script src="assets/js/ClassRegistry.js"></script>
+    <script src="assets/js/ComponentRegistry.js"></script>
+    <script src="assets/js/ControlButtonsMixin.js"></script>
+    <script src="assets/js/custom_hooks.js"></script>
+    <script src="assets/js/db.js"></script>
+    <script src="assets/js/debug_manager.js"></script>
+    <script src="assets/js/devices.js"></script>
+    <script src="assets/js/Gui.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.js"></script>
+    <script src="assets/js/keyboard.js"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/modal.js"></script>
+    <script src="assets/js/models.js"></script>
+    <script src="assets/js/payment.js"></script>
+    <script src="assets/js/PopupControllerMixin.js"></script>
+    <script src="assets/js/PosComponent.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientDetailsEdit.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientLine.js"></script>
+    <script src="assets/js/screens/ClientListScreen/ClientListScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ControlButtons/InvoiceButton.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ControlButtons/ReprintReceiptButton.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/MobileOrderManagementScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderDetails.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderFetcher.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderlineDetails.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderList.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderManagementControlPanel.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderManagementScreen.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/OrderRow.js"></script>
+    <script src="assets/js/screens/OrderManagementScreen/ReprintReceiptScreen.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentMethodButton.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreen.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenElectronicPayment.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenNumpad.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenPaymentLines.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PaymentScreenStatus.js"></script>
+    <script src="assets/js/screens/PaymentScreen/PSNumpadInputButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/CashBoxOpening.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategoryBreadcrumb.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategoryButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/CategorySimpleButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/ControlButtons/SetFiscalPositionButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/ControlButtons/SetPricelistButton.js"></script>
+    <script src="assets/js/screens/ProductScreen/HomeCategoryBreadcrumb.js"></script>
+    <script src="assets/js/screens/ProductScreen/NumpadWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/Orderline.js"></script>
+    <script src="assets/js/screens/ProductScreen/OrderSummary.js"></script>
+    <script src="assets/js/screens/ProductScreen/OrderWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductItem.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductList.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductsWidget.js"></script>
+    <script src="assets/js/screens/ProductScreen/ProductsWidgetControlPanel.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/OrderReceipt.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/ReceiptScreen.js"></script>
+    <script src="assets/js/screens/ReceiptScreen/WrappedProductNameLines.js"></script>
+    <script src="assets/js/screens/ScaleScreen/ScaleScreen.js"></script>
+    <script src="assets/js/screens/TicketScreen/TicketScreen.js"></script>
+    <script src="assets/js/theme.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,50 @@
+.bg-gradient-primary {
+  background-color: #8b1886;
+  background-image: linear-gradient(180deg,#8b1886 10%,#4f0248);
+  background-size: cover;
+}
+
+.dropdown .dropdown-list .dropdown-header {
+  background-color: #8b1886;
+  border: 1px solid #4e73df;
+  padding-top: .75rem;
+  padding-bottom: .75rem;
+  color: #fff;
+}
+
+.table td, .table th {
+  padding: .50rem;
+  vertical-align: top;
+  border-top: 1px solid #e3e6f0;
+  text-transform: capitalize;
+}
+
+.custom-control {
+  position: relative;
+  display: block;
+  min-height: 1.5rem;
+  padding-left: 1.0rem;
+}
+
+.span.new {
+  background-color: rgba(22,189,225,0.6);
+  border-radius: .5em .5em .5em .5em;
+}
+
+.span.cancelled {
+  background-color: rgba(255,0,0,0.3);
+  border-radius: .5em .5em .5em .5em;
+}
+
+.span.paid {
+  background-color: rgba(0,255,0,0.6);
+  border-radius: .5em .5em .5em .5em;
+}
+
+.modal-dialog {
+  position: relative;
+  max-width: 800px;
+  /*margin: .5rem;*/
+  pointer-events: none;
+}
+
